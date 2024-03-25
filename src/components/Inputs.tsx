@@ -18,7 +18,6 @@ export default function Inputs({
       <InfoInputs labelFor="Email" onChange={onMailChange} />
       <InfoInputs labelFor="Phone Number" onChange={onPhoneChange} />
       <InfoInputs labelFor="Address" onChange={onAddressChange} />
-      <button>Submit</button>
     </div>
   );
 }
