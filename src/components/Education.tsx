@@ -1,4 +1,5 @@
 import InfoInputs from "./InfoInput";
+import { useState } from "react";
 
 export default function Education({
   onDateChange,
@@ -13,14 +14,26 @@ export default function Education({
   onStudyChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onAddEducation: () => void;
 }) {
+  const [isHide, hide] = useState(false);
+
   return (
     <div className="custom-inputs">
-      <h2>Education</h2>
-      <InfoInputs labelFor="School" onChange={onLocationChange} />
-      <InfoInputs labelFor="Start Date - End Date" onChange={onDateChange} />
-      <InfoInputs labelFor="Degree" onChange={onDegreeChange} />
-      <InfoInputs labelFor="Field of Study" onChange={onStudyChange} />
-      <button onClick={onAddEducation}>Add Education</button>
+      <div className="topic">
+        <h2>Education</h2>
+        <button onClick={() => hide(!isHide)}>+</button>
+      </div>
+      {isHide && (
+        <>
+          <InfoInputs labelFor="School" onChange={onLocationChange} />
+          <InfoInputs
+            labelFor="Start Date - End Date"
+            onChange={onDateChange}
+          />
+          <InfoInputs labelFor="Degree" onChange={onDegreeChange} />
+          <InfoInputs labelFor="Field of Study" onChange={onStudyChange} />
+          <button onClick={onAddEducation}>Add Education</button>
+        </>
+      )}
     </div>
   );
 }

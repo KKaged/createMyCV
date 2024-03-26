@@ -1,4 +1,5 @@
 import InfoInputs from "./InfoInput";
+import React, { useState } from "react";
 
 export default function Experience({
   onExpDateChange,
@@ -15,15 +16,26 @@ export default function Experience({
   onExpDescChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleAddExperience: () => void;
 }): JSX.Element {
+  const [isHide, hide] = useState(false);
   return (
     <div className="custom-inputs">
-      <h2>Job Experience</h2>
-      <InfoInputs labelFor="Start Date - End Date" onChange={onExpDateChange} />
-      <InfoInputs labelFor="Location" onChange={onExpLocChange} />
-      <InfoInputs labelFor="Title" onChange={onExpTitleChange} />
-      <InfoInputs labelFor="Position" onChange={onExpPositionChange} />
-      <InfoInputs labelFor="Description" onChange={onExpDescChange} />
-      <button onClick={handleAddExperience}>Add Experience</button>
+      <div className="topic">
+        <h2>Job Experience</h2>
+        <button onClick={() => hide(!isHide)}>+</button>
+      </div>
+      {isHide && (
+        <>
+          <InfoInputs
+            labelFor="Start Date - End Date"
+            onChange={onExpDateChange}
+          />
+          <InfoInputs labelFor="Location" onChange={onExpLocChange} />
+          <InfoInputs labelFor="Title" onChange={onExpTitleChange} />
+          <InfoInputs labelFor="Position" onChange={onExpPositionChange} />
+          <InfoInputs labelFor="Description" onChange={onExpDescChange} />
+          <button onClick={handleAddExperience}>Add Experience</button>
+        </>
+      )}
     </div>
   );
 }
