@@ -6,9 +6,13 @@ export default function Clear({
   onClickLoad: any;
 }) {
   return (
-    <div>
-      <button onClick={onClearClick}>Clear</button>
-      <button onClick={onClickLoad}>Load Example</button>
+    <div className="clear-container">
+      <button className="clear" onClick={onClearClick}>
+        Clear
+      </button>
+      <button className="load" onClick={onClickLoad}>
+        Load Example
+      </button>
     </div>
   );
 }

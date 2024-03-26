@@ -1,9 +1,11 @@
 export default function Cv({
+  children,
   fullName,
   email,
   phoneNumber,
   address,
 }: {
+  children: any;
   fullName: string;
   email: string;
   phoneNumber: string;
@@ -19,6 +21,7 @@ export default function Cv({
           <p>{address}</p>
         </div>
       </header>
+      <section className="children"> {children}</section>
     </div>
   );
 }
